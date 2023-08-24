@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
-    <div className='App'>
+    <div className="App">
       <ToastContainer
         position="top-right"
         autoClose={4000}
@@ -31,7 +31,7 @@ const App = () => {
         </ConnectProvider>
       </BrowserRouter>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

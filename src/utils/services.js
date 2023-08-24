@@ -8,25 +8,21 @@ import gas from '@web3-onboard/gas';
 
 // Replace with your DApp's Infura ID
 const INFURA_ID = process.env.REACT_APP_INFURA_ID;
-const network= process.env.REACT_APP_NETWORK;
+const network = process.env.REACT_APP_NETWORK;
 
-const injected = injectedModule()
+const injected = injectedModule();
 
 const coinbase = coinbaseModule();
 
 const walletConnect = walletConnectModule({
-  projectId: process.env.REACT_APP_WALLETCONNECT_PROJECT_ID
+  projectId: process.env.REACT_APP_WALLETCONNECT_PROJECT_ID,
 });
 
 export const initWeb3Onboard = init({
   connect: {
-    autoConnectAllPreviousWallet: true
+    autoConnectAllPreviousWallet: true,
   },
-  wallets: [
-    injected,
-    walletConnect,
-    coinbase,
-  ],
+  wallets: [injected, walletConnect, coinbase],
   chains: [
     // {
     //   id: '0x1',
@@ -44,13 +40,13 @@ export const initWeb3Onboard = init({
       id: '0x89',
       token: 'MATIC',
       label: 'Polygon',
-      rpcUrl: `https://rpc-mainnet.maticvigil.com`
+      rpcUrl: `https://rpc-mainnet.maticvigil.com`,
     },
     {
       id: '0x13881',
       token: 'MATIC',
       label: 'Mumbai',
-      rpcUrl: `https://rpc-mumbai.maticvigil.com/`
+      rpcUrl: `https://rpc-mumbai.maticvigil.com/`,
     },
   ],
   appMetadata: {
@@ -59,22 +55,22 @@ export const initWeb3Onboard = init({
     description: 'Demo app for Web3-Onboard',
     recommendedInjectedWallets: [
       { name: 'Coinbase', url: 'https://wallet.coinbase.com/' },
-      { name: 'MetaMask', url: 'https://metamask.io' }
+      { name: 'MetaMask', url: 'https://metamask.io' },
     ],
     agreement: {
       version: '1.0.0',
       termsUrl: 'https://www.blocknative.com/terms-conditions',
-      privacyUrl: 'https://www.blocknative.com/privacy-policy'
+      privacyUrl: 'https://www.blocknative.com/privacy-policy',
     },
     gettingStartedGuide: 'https://blocknative.com',
-    explore: 'https://blocknative.com'
+    explore: 'https://blocknative.com',
   },
   accountCenter: {
     desktop: {
       position: 'topRight',
       enabled: false,
-      minimal: false
-    }
+      minimal: false,
+    },
   },
   // example customizing copy
   i18n: {
@@ -86,9 +82,9 @@ export const initWeb3Onboard = init({
             heading: 'Comenzar',
             subheading: 'Conecta tu monedero',
             paragraph:
-              'Conectar su billetera es como “iniciar sesión” en Web3. Seleccione su billetera de las opciones para comenzar.'
-          }
-        }
+              'Conectar su billetera es como “iniciar sesión” en Web3. Seleccione su billetera de las opciones para comenzar.',
+          },
+        },
       },
       accountCenter: {
         connectAnotherWallet: 'Conectar otro monedero',
@@ -103,9 +99,9 @@ export const initWeb3Onboard = init({
         poweredBy: 'Funciona con',
         addAccount: 'Añadir cuenta',
         setPrimaryAccount: 'Establecer cuenta principal',
-        disconnectWallet: 'Desconectar Wallet'
-      }
-    }
+        disconnectWallet: 'Desconectar Wallet',
+      },
+    },
   },
   notify: {
     transactionHandler: transaction => {
@@ -115,24 +111,25 @@ export const initWeb3Onboard = init({
           autoDismiss: 0,
           // message: `Your transaction is pending, click <a href="https://goerli.etherscan.io/tx/${transaction.hash}" rel="noopener noreferrer" target="_blank">here</a> for more info.`,
           // or you could use onClick for when someone clicks on the notification itself
-          onClick: () =>{
-            if(network === "PRODUCT") {
-              window.open(`https://mainnet.etherscan.io/tx/${transaction.hash}`);
+          onClick: () => {
+            if (network === 'PRODUCT') {
+              window.open(
+                `https://mainnet.etherscan.io/tx/${transaction.hash}`
+              );
             } else {
               window.open(`https://goerli.etherscan.io/tx/${transaction.hash}`);
             }
-
-          }
-        }
+          },
+        };
       }
-    }
+    },
   },
-  theme: 'dark'
+  theme: 'dark',
 });
 
 // subscribe to a single chain for estimates using the default poll rate of 5 secs
 // API key is optional and if provided allows for faster poll rates
 export const ethMainnetGasBlockPrices = gas.stream({
   chains: ['0x1'],
-  endpoint: 'blockPrices'
+  endpoint: 'blockPrices',
 });

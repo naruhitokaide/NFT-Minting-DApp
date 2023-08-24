@@ -4,6 +4,6 @@ const networkEnum = Object.freeze({
   '0x89': 'Polygon',
   '0x13881': 'Mumbai',
   '0xfa': 'Fantom',
-  localhost: 'localhost'
+  localhost: 'localhost',
 });
 export default networkEnum;
