@@ -7,7 +7,6 @@ import Contract_Abi from '../utils/abi.json';
 
 const ConnectContext = createContext();
 const Contract_address = process.env.REACT_APP_CONTRACT_ADDRESS;
-const INFURA_ID = process.env.REACT_APP_INFURA_ID;
 
 function ConnectProvider({ children }) {
   const [{ wallet }, connect, disconnect] = useConnectWallet();

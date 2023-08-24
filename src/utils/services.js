@@ -7,7 +7,6 @@ import coinbaseModule from '@web3-onboard/coinbase';
 import gas from '@web3-onboard/gas';
 
 // Replace with your DApp's Infura ID
-const INFURA_ID = process.env.REACT_APP_INFURA_ID;
 const network = process.env.REACT_APP_NETWORK;
 
 const injected = injectedModule();

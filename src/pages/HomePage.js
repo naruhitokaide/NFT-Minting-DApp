@@ -4,15 +4,13 @@ import {
   Row,
   Col,
   Button,
-  Image,
   InputGroup,
   Form,
 } from 'react-bootstrap';
-import { Banner } from '../assets';
 import { useConnect } from '../contexts/contexts';
 import { toast } from 'react-toastify';
 import Contract_Abi from '../utils/abi.json';
-import { ethers, BigNumber } from 'ethers';
+import { ethers } from 'ethers';
 
 const Contract_address = process.env.REACT_APP_CONTRACT_ADDRESS;
 
@@ -77,7 +75,7 @@ export default function HomePage() {
             value: cost,
           });
           toast.success('Transaction started... Wait a few seconds.');
-          response.wait().then(async res => {
+          response.wait().then(async() => {
             toast.success('Transaction completed.');
             const _totoalMintNum = parseInt(
               await contract.getTotalMintNumber()
