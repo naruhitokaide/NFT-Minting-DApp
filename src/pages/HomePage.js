@@ -1,12 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  InputGroup,
-  Form,
-} from 'react-bootstrap';
+import { Container, Row, Col, Button, InputGroup, Form } from 'react-bootstrap';
 import { useConnect } from '../contexts/contexts';
 import { toast } from 'react-toastify';
 import Contract_Abi from '../utils/abi.json';
@@ -75,7 +68,7 @@ export default function HomePage() {
             value: cost,
           });
           toast.success('Transaction started... Wait a few seconds.');
-          response.wait().then(async() => {
+          response.wait().then(async () => {
             toast.success('Transaction completed.');
             const _totoalMintNum = parseInt(
               await contract.getTotalMintNumber()
